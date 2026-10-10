@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FloraGuía · Exposición</title>
+<meta name="description" content="Exposición del trabajo final de Base de Datos: FloraGuía, de la startup Raíz Urbana (UPC 2026-10).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ Vista general: división de la exposición ============ -->
+<main class="overview" id="overview">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Raíz Urbana · 1ASI0787 Base de Datos · NRC 8696</p>
+      <h1>FloraGuía</h1>
+      <p>Exposición del trabajo final: una base de datos que recomienda qué especies sembrar en cada zona de Lima. Aquí está la división de la exposición por integrante, el guion de cada diapositiva y el modo presentación.</p>
+    </div>
+    <div class="hero-actions">
+      <button class="btn btn-primary" data-start="1">▶ Iniciar presentación</button>
+      <a class="btn btn-ghost" href="descargas/FloraGuia_Exposicion.pdf" download>Descargar PDF</a>
+      <a class="btn btn-ghost" href="descargas/FloraGuia_Exposicion.pptx" download>Descargar PPTX</a>
+    </div>
+  </header>
+
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Orden de exposición</p>
+      <h2>División por integrante</h2>
+    </div>
+    <span class="total" id="total-time"></span>
+  </div>
+  <div class="timeline" id="timeline" aria-label="Tiempo de exposición por integrante"></div>
+  <div class="legend" id="legend"></div>
+  <div class="presenters" id="presenters"></div>
+
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Diapositivas</p>
+      <h2>Toda la exposición</h2>
+    </div>
+  </div>
+  <div class="thumbs" id="thumbs"></div>
+
+  <p class="foot">
+    En modo presentación: <kbd>→</kbd> / <kbd>Espacio</kbd> siguiente · <kbd>←</kbd> anterior ·
+    <kbd>N</kbd> notas del expositor · <kbd>F</kbd> pantalla completa · <kbd>Esc</kbd> volver.<br>
+    Universidad Peruana de Ciencias Aplicadas · Ingeniería de Software · Período 2026-10 · Docente: Felicita Saenz.
+  </p>
+</main>
+
+<!-- ============ Modo presentación ============ -->
+<div class="viewer" id="viewer" hidden>
+  <div class="viewer-bar">
+    <button class="icon-btn" id="btn-exit" title="Volver (Esc)">← <span class="label">Volver</span></button>
+    <span class="chip" id="presenter-chip"></span>
+    <span class="spacer"></span>
+    <span class="counter" id="counter"></span>
+    <button class="icon-btn" id="btn-notes" aria-pressed="true" title="Notas (N)">Notas</button>
+    <button class="icon-btn" id="btn-full" title="Pantalla completa (F)">⛶</button>
+  </div>
+  <div class="stage-wrap">
+    <div class="stage" id="stage">
+      <button class="nav-zone prev" id="nav-prev" aria-label="Diapositiva anterior"></button>
+      <div class="stage-inner" id="stage-inner"></div>
+      <button class="nav-zone next" id="nav-next" aria-label="Diapositiva siguiente"></button>
+    </div>
+    <aside class="notes" id="notes"></aside>
+  </div>
+  <div class="progress" id="progress"></div>
+</div>
+
+<!-- ============ Diapositivas (fuente) ============
+     data-presenter: clave de PRESENTERS en app.js
+     data-min: minutos sugeridos
+     <aside>: guion del expositor -->
+<div id="slides-src">
+
+<section class="slide" data-title="Portada" data-presenter="espinoza" data-min="0.5" style="background:#1F3A2B;color:#F4F1E8;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+  <div style="position:absolute;right:0;top:0;width:560px;height:1080px;background:linear-gradient(160deg, #2E5A3F 0%, #1F3A2B 100%)"></div>
+  <span class="ic" data-icon="sprout" style="position:absolute;left:1420px;top:400px;width:280px;height:280px;color:#7FB685;opacity:0.55"></span>
+  <p style="position:relative;font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E9A867">Raíz Urbana · Trabajo final de Base de Datos</p>
+  <div style="position:relative;display:flex;flex-direction:column;gap:32px;width:1200px">
+    <h1 style="font-family:'Domine', Georgia, serif;font-size:140px;font-weight:700;line-height:1.05">FloraGuía</h1>
+    <p style="font-size:44px;line-height:1.3;color:#C9DCC9">Base de datos para recomendar qué especies sembrar en cada zona de Lima</p>
+  </div>
+  <div style="position:relative;display:flex;flex-direction:column;gap:8px">
+    <p style="font-size:28px;color:#C9DCC9">1ASI0787 Base de Datos · NRC 8696 · Docente: Felicita Saenz</p>
+    <p style="font-size:28px;color:#C9DCC9">UPC · Período 2026-10</p>
+  </div>
+  <aside><ul>
+    <li>Saludar y presentar la startup Raíz Urbana y su producto FloraGuía.</li>
+    <li>Explicar en una frase el objetivo: recomendar qué especies sembrar según las condiciones de cada zona.</li>
+    <li>Anunciar el orden de la exposición y quién presenta cada parte.</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Problemática" data-presenter="espinoza" data-min="1.5" style="background:#F4F1E8;color:#1F3A2B;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#B5652A">Problemática</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:72px;font-weight:700;line-height:1.1">Hoy se elige qué sembrar por prueba y error</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:16px;background:#FBFAF5;padding:40px;border:1px solid #D9DED4;border-radius:16px">
+      <span class="ic" data-icon="users" style="width:56px;height:56px;color:#2E5A3F"></span>
+      <h3 style="font-size:40px;font-weight:700">Quiénes</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Aficionados a la jardinería, personal técnico de SERPAR y viveros.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;background:#FBFAF5;padding:40px;border:1px solid #D9DED4;border-radius:16px">
+      <span class="ic" data-icon="globe" style="width:56px;height:56px;color:#2E5A3F"></span>
+      <h3 style="font-size:40px;font-weight:700">Dónde</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Lima Metropolitana: microclimas costeros, intermedios y elevados entre distritos.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;background:#FBFAF5;padding:40px;border:1px solid #D9DED4;border-radius:16px">
+      <span class="ic" data-icon="warning" style="width:56px;height:56px;color:#B5652A"></span>
+      <h3 style="font-size:40px;font-weight:700">Consecuencia</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Alta mortalidad de plantas, riego ineficiente y sobrecostos de reforestación.</p>
+    </div>
+  </div>
+  <p style="font-size:32px;line-height:1.4;color:#45564B;width:1500px"><b>Causa raíz:</b> no existe una fuente centralizada y validada que relacione cada especie con el suelo, clima, radiación y agua de una zona.</p>
+  <p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6B7A6F">Fuente: Rivera et al. (2024); Merlo y Sanz (2025)</p>
+  <aside><ul>
+    <li>La selección de especies se hace de forma empírica: experiencia personal, recomendaciones informales o búsquedas dispersas.</li>
+    <li>Actores: aficionados, personal técnico de SERPAR (ingenieros forestales, agrónomos, planificadores) y viveros.</li>
+    <li>Lima tiene microclimas muy distintos entre distritos, por eso no sirve un criterio único de siembra.</li>
+    <li>Antecedente: Rivera et al. (2024) evaluaron el programa “Árboles para Lima” en ocho distritos de Lima Sur; la supervivencia varió según el distrito.</li>
+    <li>Causa raíz: falta una fuente centralizada y técnicamente validada.</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Propuesta de valor" data-presenter="espinoza" data-min="1" style="background:#F4F1E8;color:#1F3A2B;padding:128px;display:flex;flex-direction:column;justify-content:space-between;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#B5652A">Propuesta de valor</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:72px;font-weight:700;line-height:1.1">Cruzar la zona con el perfil de cada especie</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:12px;background:#FBFAF5;padding:48px;border-left:8px solid #2E5A3F;border-radius:12px">
+      <h3 style="font-size:40px;font-weight:700">Sugerencias precisas</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Consultas que correlacionan suelo, clima y agua de un área con el cultivo óptimo de cada planta.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;background:#FBFAF5;padding:48px;border-left:8px solid #2E5A3F;border-radius:12px">
+      <h3 style="font-size:40px;font-weight:700">Eficiencia para SERPAR</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Mejor uso del presupuesto de arborización al aumentar la supervivencia de áreas verdes.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;background:#FBFAF5;padding:48px;border-left:8px solid #B5652A;border-radius:12px">
+      <h3 style="font-size:40px;font-weight:700">Guía para el aficionado</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Recomendaciones de siembra y cuidados según la ubicación exacta del usuario.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;background:#FBFAF5;padding:48px;border-left:8px solid #B5652A;border-radius:12px">
+      <h3 style="font-size:40px;font-weight:700">Estructura escalable</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Modelo de datos listo para métricas de suelo, clima, plagas y mantenimiento.</p>
+    </div>
+  </div>
+  <aside><ul>
+    <li>FloraGuía es un sistema de base de datos relacional especializado en compatibilidad botánica y microclimática.</li>
+    <li>Recorrer los cuatro pilares: sugerencias precisas, eficiencia para SERPAR, guía para el aficionado y estructura escalable.</li>
+    <li>A futuro: ciclo de vida de la planta y sensores de humedad y temperatura.</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Segmentos objetivo" data-presenter="espinoza" data-min="1" style="background:#E3EBDF;color:#1F3A2B;padding:128px;display:flex;flex-direction:column;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#B5652A">Segmentos objetivo</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:72px;font-weight:700;line-height:1.1">Dos usuarios, una misma necesidad</h2>
+  </div>
+  <div style="display:flex;gap:40px;flex:1">
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#FBFAF5;padding:56px;border-radius:16px">
+      <span class="ic" data-icon="home" style="width:72px;height:72px;color:#2E5A3F"></span>
+      <h3 style="font-family:'Domine', Georgia, serif;font-size:44px;font-weight:700;line-height:1.2">Aficionados a la jardinería y huertos urbanos</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Cultivan plantas ornamentales, comestibles o de interior y buscan orientación técnica clara según su ubicación.</p>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#FBFAF5;padding:56px;border-radius:16px">
+      <span class="ic" data-icon="trees" style="width:72px;height:72px;color:#B5652A"></span>
+      <h3 style="font-family:'Domine', Georgia, serif;font-size:44px;font-weight:700;line-height:1.2">Gestores de áreas verdes públicas (SERPAR)</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Ingenieros forestales, agrónomos y planificadores que seleccionan especies y mantienen parques y alamedas.</p>
+    </div>
+  </div>
+  <aside><ul>
+    <li>Segmento 1: personas que cultivan en casa y necesitan orientación práctica para no perder sus plantas.</li>
+    <li>Segmento 2: personal técnico y administrativo de SERPAR que necesita criterios objetivos para cada zona.</li>
+    <li>Ceder la palabra para presentar las entrevistas.</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Entrevistas" data-presenter="moreno" data-min="1" style="background:#F4F1E8;color:#1F3A2B;padding:128px;display:flex;flex-direction:column;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#B5652A">Entrevistas</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:72px;font-weight:700;line-height:1.1">Escuchamos a ambos segmentos</h2>
+  </div>
+  <div style="display:flex;gap:40px">
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px">
+      <img src="assets/img/entrevista-aficionado.png" alt="Captura de la entrevista a Maykel Adrian Ticona Ynga" style="width:812px;height:400px;object-fit:cover;border-radius:16px">
+      <h3 style="font-size:40px;font-weight:700">Maykel Adrian Ticona Ynga</h3>
+      <p style="font-size:28px;color:#45564B">Aficionado · San Martín de Porres</p>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;gap:16px">
+        <img src="assets/img/entrevista-gestor-1.png" alt="Captura de la entrevista a Max Yapu Jalio" style="width:398px;height:400px;object-fit:cover;border-radius:16px">
+        <img src="assets/img/entrevista-gestor-2.png" alt="Entrevistador durante la entrevista al gestor" style="width:398px;height:400px;object-fit:cover;border-radius:16px">
+      </div>
+      <h3 style="font-size:40px;font-weight:700">Max Yapu Jalio</h3>
+      <p style="font-size:28px;color:#45564B">Gestor de áreas verdes · Comas</p>
+    </div>
+  </div>
+  <aside><ul>
+    <li>Se diseñaron 9 preguntas por segmento (A1–A9 para aficionados, G1–G9 para gestores); cada una alimenta un dato o requisito.</li>
+    <li>Aficionado: aprendió de forma empírica, con sus padres, internet y YouTube.</li>
+    <li>Gestor: la selección depende del clima, el suelo, el agua y el mantenimiento.</li>
+    <li>Videos: youtu.be/o0iCu0jrKZc y youtu.be/uRWa8MzIz0E.</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Análisis de entrevistas" data-presenter="moreno" data-min="1.5" style="background:#F4F1E8;color:#1F3A2B;padding:128px;display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#B5652A">Análisis de entrevistas</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:72px;font-weight:700;line-height:1.1">Cada hallazgo se convierte en un requisito</h2>
+  </div>
+  <table style="font-size:28px;color:#1F3A2B;background:#FBFAF5">
+    <tr style="background:#1F3A2B;color:#F4F1E8"><th style="width:52%">Hallazgo</th><th style="width:14%">Fuente</th><th style="width:34%">Requisito / entidad</th></tr>
+    <tr><td>Selección empírica, sin fuente validada</td><td>E1, E2</td><td>RF-02, RF-06 · Especie</td></tr>
+    <tr><td>Suelo, clima, agua y sol definen el éxito</td><td>E1, E2</td><td>RF-03 a RF-05 · Zona</td></tr>
+    <tr><td>Hongos y plagas causan pérdidas</td><td>E1, E2</td><td>RF-08, RF-10 · Plaga</td></tr>
+    <tr><td>Cuidados por temporada y recordatorios</td><td>E1, E2</td><td>RF-09 · Mantenimiento</td></tr>
+    <tr><td>Informes para planificar recursos</td><td>E2</td><td>RF-12 · Reportes</td></tr>
+    <tr><td>Validación por especialistas y permisos</td><td>E2</td><td>RF-13, RNF-01</td></tr>
+  </table>
+  <aside><ul>
+    <li>E1 = aficionado; E2 = gestor de áreas verdes.</li>
+    <li>El aficionado tuvo problemas con hongos y con el sol, y pidió notificaciones con los pasos exactos de cuidado.</li>
+    <li>El gestor pidió organizar parques, jardines y alamedas con sus condiciones, informes de recursos y validación por especialistas.</li>
+    <li>El registro de plantas sobrevivientes y reemplazadas queda como módulo futuro de ciclo de vida (RNF-05).</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Requisitos" data-presenter="moreno" data-min="1" style="background:#1F3A2B;color:#F4F1E8;padding:128px;display:flex;flex-direction:column;justify-content:space-between;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E9A867">Requisitos</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:72px;font-weight:700;line-height:1.1">Lo que el sistema debe hacer y garantizar</h2>
+  </div>
+  <div style="display:flex;gap:40px">
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#2A4A37;padding:48px;border-radius:16px">
+      <p style="font-family:'Domine', Georgia, serif;font-size:180px;font-weight:700;line-height:1;color:#E9A867">13</p>
+      <h3 style="font-size:40px;font-weight:700">Requisitos funcionales</h3>
+      <p style="font-size:32px;line-height:1.4;color:#C9DCC9">Catálogo de especies, zonas, compatibilidad, recomendación de siembra, plagas, mantenimiento y reportes.</p>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#2A4A37;padding:48px;border-radius:16px">
+      <p style="font-family:'Domine', Georgia, serif;font-size:180px;font-weight:700;line-height:1;color:#E9A867">8</p>
+      <h3 style="font-size:40px;font-weight:700">Requisitos no funcionales</h3>
+      <p style="font-size:32px;line-height:1.4;color:#C9DCC9">Seguridad, integridad referencial, rendimiento, escalabilidad, usabilidad web y móvil, 3FN.</p>
+    </div>
+  </div>
+  <aside><ul>
+    <li>Prioridad alta: registro de usuarios, catálogo de especies, suelos, zonas, compatibilidad, recomendación y validación de datos (RF-01 a RF-06, RF-13).</li>
+    <li>No funcionales clave: contraseñas con hash, integridad con PK/FK/UNIQUE/CHECK, normalización hasta 3FN e implementación en SQL Server.</li>
+    <li>Ceder la palabra para el diseño de la base de datos.</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Entidades" data-presenter="lluen" data-min="1.5" style="background:#E3EBDF;color:#1F3A2B;padding:128px;display:flex;flex-direction:column;justify-content:space-between;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#B5652A">Diseño de base de datos</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:72px;font-weight:700;line-height:1.1">14 entidades en tres bloques, unidas por Compatibilidad</h2>
+  </div>
+  <div style="display:flex;gap:32px">
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FBFAF5;padding:40px;border-top:8px solid #3D6FA8;border-radius:12px">
+      <h3 style="font-size:40px;font-weight:700">Usuarios</h3>
+      <p style="font-size:32px;line-height:1.5;color:#45564B">TipoUsuario<br>Usuario<br>Recomendacion<br>DetalleRecomendacion</p>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FBFAF5;padding:40px;border-top:8px solid #B5652A;border-radius:12px">
+      <h3 style="font-size:40px;font-weight:700">Zonas</h3>
+      <p style="font-size:32px;line-height:1.5;color:#45564B">Distrito<br>TipoSuelo<br>Zona</p>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FBFAF5;padding:40px;border-top:8px solid #2E5A3F;border-radius:12px">
+      <h3 style="font-size:40px;font-weight:700">Especies</h3>
+      <p style="font-size:32px;line-height:1.5;color:#45564B">CategoriaEspecie<br>Especie<br>EspecieTipoSuelo<br>Plaga · EspeciePlaga<br>Mantenimiento</p>
+    </div>
+  </div>
+  <p style="font-size:32px;line-height:1.4;color:#45564B"><b>Compatibilidad</b> guarda el nivel y puntaje validados de cada par especie–zona. Modelo normalizado hasta 3FN.</p>
+  <aside><ul>
+    <li>Las entidades salen de los módulos del sistema y de los requisitos; cada una responde al menos a un requisito.</li>
+    <li>Las relaciones muchos a muchos se resuelven con EspecieTipoSuelo, EspeciePlaga y Compatibilidad.</li>
+    <li>1FN: valores atómicos; 2FN: en claves compuestas todo depende de la clave completa; 3FN: sin dependencias transitivas.</li>
+    <li>Compatibilidad podría calcularse, pero se conserva porque guarda una evaluación validada y fechada (RF-05, RF-13).</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="DER lógico" data-presenter="lluen" data-min="1.5" style="background:#FBFAF5;color:#1F3A2B;padding:72px 64px 48px;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <h2 style="font-family:'Domine', Georgia, serif;font-size:52px;font-weight:700;line-height:1.1;width:1792px">Diagrama entidad-relación lógico</h2>
+  <img src="assets/img/der-logico.png" alt="Diagrama entidad-relación lógico de FloraGuía con 14 entidades, sus claves y cardinalidades" style="width:1792px;height:878px;object-fit:contain">
+  <aside><ul>
+    <li>Leyenda: PK llave primaria, FK llave foránea, AK llave alterna; línea continua = relación identificante, punteada = no identificante.</li>
+    <li>Recorrido: un Usuario realiza una Recomendacion para una Zona; su detalle apunta a las Compatibilidades sugeridas en orden.</li>
+    <li>Especie se relaciona con TipoSuelo, Plaga y Mantenimiento; Zona con Distrito y TipoSuelo.</li>
+    <li>Regla no garantizada por el modelo: la zona de la recomendación debe coincidir con la de sus compatibilidades (procedimiento almacenado o disparador).</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="DER físico" data-presenter="arias" data-min="2" style="background:#1E1F22;color:#F4F1E8;padding:72px 64px 48px;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <h2 style="font-family:'Domine', Georgia, serif;font-size:52px;font-weight:700;line-height:1.1;width:1792px">Diagrama entidad-relación físico</h2>
+  <img src="assets/img/der-fisico.png" alt="Diagrama entidad-relación físico de FloraGuía con tipos de datos SQL Server, nulabilidad y valores por defecto" style="width:1792px;height:878px;object-fit:contain">
+  <aside><ul>
+    <li>El modelo lógico se traduce a tipos de SQL Server: INT IDENTITY para claves, VARCHAR para textos, DECIMAL(4,1) para temperaturas, DECIMAL(5,2) para humedad y DECIMAL(9,6) para latitud y longitud.</li>
+    <li>Fechas: DATETIME2 con valor por defecto SYSDATETIME() en fecha_registro y fecha_consulta; BIT para el campo activo de Usuario.</li>
+    <li>Restricciones CHECK: humedad entre 0 y 100, niveles Baja/Media/Alta, temp_min ≤ temp_max, frecuencia_dias &gt; 0.</li>
+    <li>UNIQUE: correo, nombre_cientifico y el par (id_especie, id_zona) en Compatibilidad.</li>
+    <li>Borrado: NO ACTION en catálogos y ON DELETE CASCADE solo de Recomendacion a DetalleRecomendacion.</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Sistemas de base de datos" data-presenter="mendez" data-min="2" style="background:#F4F1E8;color:#1F3A2B;padding:128px;display:flex;flex-direction:column;justify-content:space-between;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#B5652A">Implementación</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:72px;font-weight:700;line-height:1.1">Persistencia políglota: relacional + documentos</h2>
+  </div>
+  <div style="display:flex;gap:40px">
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#FBFAF5;padding:48px;border:1px solid #D9DED4;border-radius:16px">
+      <span class="ic" data-icon="database" style="width:64px;height:64px;color:#2E5A3F"></span>
+      <h3 style="font-size:40px;font-weight:700">SQL Server</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Usuarios, catálogos maestros y compatibilidades validadas, con integridad ACID y claves foráneas.</p>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#FBFAF5;padding:48px;border:1px solid #D9DED4;border-radius:16px">
+      <span class="ic" data-icon="braces" style="width:64px;height:64px;color:#B5652A"></span>
+      <h3 style="font-size:40px;font-weight:700">MongoDB</h3>
+      <p style="font-size:32px;line-height:1.4;color:#45564B">Fichas botánicas flexibles, logs de recomendaciones y futuras lecturas de sensores (RNF-05).</p>
+    </div>
+  </div>
+  <p style="font-size:28px;line-height:1.4;color:#6B7A6F">MongoDB se eligió frente a Redis y Cassandra por su esquema flexible y consultas expresivas.</p>
+  <aside><ul>
+    <li>Relacional: SQL Server con SSMS 21 por su fiabilidad, integridad y consistencia de la información.</li>
+    <li>No relacional, alternativas evaluadas: Redis (clave-valor, muy rápido en memoria, pero sin consultas complejas) y Cassandra (columna ancha, alta disponibilidad, pero configuración compleja).</li>
+    <li>Se eligió MongoDB por su esquema flexible para fichas botánicas, el registro de recomendaciones como documentos y la preparación para sensores IoT.</li>
+    <li>Ceder la palabra para el cierre.</li>
+  </ul></aside>
+</section>
+
+<section class="slide" data-title="Cierre" data-presenter="espinoza" data-min="0.5" style="background:#1F3A2B;color:#F4F1E8;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+  <div style="display:flex;flex-direction:column;gap:24px">
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#E9A867">Equipo Raíz Urbana</p>
+    <h2 style="font-family:'Domine', Georgia, serif;font-size:96px;font-weight:700;line-height:1.1">Gracias</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px 64px">
+    <p style="font-size:32px"><b>Digber David Espinoza Huamani</b><br><span style="color:#C9DCC9">Team Leader</span></p>
+    <p style="font-size:32px"><b>Rodolfo Enmanuel Méndez Díaz</b></p>
+    <p style="font-size:32px"><b>Bryan Jair Lluen Garnique</b></p>
+    <p style="font-size:32px"><b>Angel Alejandro Arias Ticona</b></p>
+    <p style="font-size:32px"><b>Brother Pablo Moreno Cordova</b></p>
+  </div>
+  <aside><ul>
+    <li>Resumir: FloraGuía centraliza la información de especies y zonas para reducir la pérdida de plantas y el uso ineficiente de recursos.</li>
+    <li>Próximos pasos: scripts de creación y carga de datos, y consultas (secciones 4.3 y 4.4).</li>
+    <li>Agradecer y abrir la ronda de preguntas.</li>
+  </ul></aside>
+</section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
